@@ -1,0 +1,19 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "Проект Вычислитель отличий",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VanHadsoN/frontend-project-46.git"
+  },
+  "author": "Konstantin Stasenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VanHadsoN/frontend-project-46/issues"
+  },
+  "homepage": "https://github.com/VanHadsoN/frontend-project-46#readme"
+}
