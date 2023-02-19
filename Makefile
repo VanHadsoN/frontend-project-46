@@ -5,4 +5,4 @@ link:
 lint: # выполняется проверка Linter-ом всех файлов проекта
 	npx eslint .
 publish: # выполняется имитация публикации проекта
-    npm publish --dry-run
+      npm publish --dry-run
