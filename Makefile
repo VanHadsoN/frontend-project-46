@@ -1,5 +1,7 @@
 install-deps: # устанавливаются зависимости после клонирования проекта
 	npm ci
+gendiff:
+      node bin/gendiff.js
 link:
 	sudo npm link
 lint: # выполняется проверка Linter-ом всех файлов проекта
