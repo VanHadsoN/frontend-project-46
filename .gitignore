@@ -1,0 +1,6 @@
+# ignore all node_modules
+/node_modules/
+# ignore all logs
+*.log
+# ignore files Coverage test (Jest)
+/coverage
