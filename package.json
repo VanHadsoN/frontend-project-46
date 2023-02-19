@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/VanHadsoN/frontend-project-46/issues"
   },
+  "type": "module",
   "homepage": "https://github.com/VanHadsoN/frontend-project-46#readme"
 }
