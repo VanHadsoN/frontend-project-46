@@ -1,7 +1,7 @@
 import { extname, resolve } from 'path';
 import { readFileSync } from 'fs';
 import parsers from './parsers.js';
-import genTree from './genTree.js';
+import fileComparison from './fileComparison.js';
 import format from './formatters/index.js';
 
 const getExtension = (filename) => extname(filename).slice(1);
@@ -16,7 +16,7 @@ const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
     const file1 = parsers(readFile1, getExtension(filepath1));
     const file2 = parsers(readFile2, getExtension(filepath2));
   // генерация массива объектов, описывающих различия в двух исходных объектах
-    const tree = genTree(file1, file2);
+    const tree = fileComparison(file1, file2);
   // Полученный массив объектов форматируем в нужного вида строку
     return format(tree, formatName);
 };
