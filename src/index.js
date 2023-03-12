@@ -1,11 +1,7 @@
 import path from 'path';
 import { readFileSync } from 'fs';
 import _ from 'lodash';
-//import parsers from './parsers.js';
-//import fileComparison from './fileComparison.js';
-//import format from './formatters/index.js';
 
-//const getExtension = (filename) => extname(filename).slice(1);
 const getFixturePathToFile = (filename) => path.resolve(process.cwd(), filename);
 const readFile = (filename) => readFileSync(getFixturePathToFile(filename), 'utf-8');
 
@@ -58,6 +54,7 @@ const genDiff = (filepath1, filepath2) => {
 
   return result;
   };
+  
   console.log(fileComparison(parseFile1, parseFile2));
 };
 
