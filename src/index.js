@@ -19,40 +19,28 @@ const genDiff = (filepath1, filepath2) => {
   const sortedKeys = _.sortBy(_.union(_.keys(data1), _.keys(data2)));
 
   const result = sortedKeys.map((key) => {
-    // Если текущего ключа НЕТ в файле1
-    if (!_.has(data1, key)) {
-      return {
-        type: '+',
-        key,
-        value: data2[key],
-      };
+    // Если равны ключи и значения
+    if (_.has(data1, key) && _.has(data2, key)) {
+      if (data1[key] === data2[key]) {
+        result.push(` ${key}: ${data1[key]}`);
+      }
     }
-    // Если текущего ключа НЕТ в файле2
-    if (!_.has(data2, key)) {
-      return {
-        type: '-',
-        key,
-        value: data1[key],
-      };
+    // Если равны ключи, но значения разные
+    if (_.has(data1, key) && _.has(data2, key)) {
+      if (data1[key] !== data2[key]) {
+        result.push(` - ${key}: ${data1[key]}`);
+        result.push(` + ${key}: ${data2[key]}`);
+      }
     }
-    // Если значения текущего ключа НЕ равны друг другу (значениям в файле1 и файле2)
-    if (!_.isEqual(data1[key], data2[key])) {
-      return {
-        type: '-+',
-        key,
-        removedValue: data1[key],
-        addedValue: data2[key],
-      };
+    // Если ключ есть в первом файле, но нет во втором
+    if (_.has(data1, key) && !_.has(data2, key)) {
+      result.push(` - ${key}: ${data1[key]}`);
     }
-    // Если значение текущего ключа НЕ изменилось
-    return {
-      type: ' ',
-      key,
-      value: data1[key],
-    };
+    // Если ключ есть во втором файле, но нет в первом
+    if (!_.has(data1, key) && _.has(data2, key)) {
+      result.push(` + ${key}: ${data2[key]}`);
+    }
   });
-
-  return result;
   };
   
   console.log(fileComparison(parseFile1, parseFile2));
