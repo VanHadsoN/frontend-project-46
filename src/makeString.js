@@ -5,12 +5,12 @@ const makeString = (object) => {
         } if (element.type === 'deleted') {
             return `  - ${element.key}: ${element.value}`;
         } if (element.type === 'changed') {
-            return `  - ${element.key}: ${element.value1} + ${element.key}: ${element.value2}`;
+            return `  - ${element.key}: ${element.value1} \n  + ${element.key}: ${element.value2}`;
         }
         return `    ${element.key}: ${element.value}`;
     });
     const result = strings.join('\n');
-    return `{${result}}`;
+    return `{\n${result}\n}`;
 };
 
 export default makeString;
