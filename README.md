@@ -4,6 +4,8 @@
 <a href="https://codeclimate.com/github/VanHadsoN/frontend-project-46/maintainability"><img src="https://api.codeclimate.com/v1/badges/562db448e5dc4a0dade8/maintainability" /></a>
 ### Code Climate Test Coverage:
 <a href="https://codeclimate.com/github/VanHadsoN/frontend-project-46/test_coverage"><img src="https://api.codeclimate.com/v1/badges/562db448e5dc4a0dade8/test_coverage" /></a>
+### Github Actions:
+[![example workflow](https://github.com/VanHadsoN/frontend-project-46/actions/workflows/nodejs.yml/badge.svg)](https://github.com/VanHadsoN/frontend-project-46/actions)
 ## Comparison of flat files (JSON) demonstration:
 for start:
 ```
