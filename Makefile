@@ -9,8 +9,8 @@ publish: # выполняется имитация публикации прое
 lint: # выполняется проверка Linter-ом всех файлов проекта
 	npx eslint .
 test: # выполняются тесты Jest
-	npm test
+	npx jest
 test-coverage: # отображается в командной строке процент покрытия тестами
-	npm test -- --coverage --coverageProvider=v8
+	npx jest -- --coverage --coverageProvider=v8
 test-watch: # тесты выполняются в режиме наблюдения с доп. параметрами
-	npm test -- --watchAll
+	npx jest -- --watchAll
