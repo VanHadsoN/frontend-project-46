@@ -7,7 +7,9 @@ const fileComparison = (data1, data2) => {
   const sortedKeys = _.sortBy(allKeys);
 
   const compareKeys = sortedKeys.map((key) => {
-    if (!_.has(data1, key)) {
+    if (_.isPlainObject(data1[key]) && _.isPlainObject(data2[key])) {
+      return { key, value: fileComparison(data1[key], data2[key]), type: 'nested' };
+    } if (!_.has(data1, key)) {
       return { key, value: data2[key], type: 'added' };
     } if (!_.has(data2, key)) {
       return { key, value: data1[key], type: 'deleted' };
