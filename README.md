@@ -12,3 +12,9 @@ for start:
 gendiff [filepath1] [filepath2]
 ```
 [![asciicast](https://asciinema.org/a/eRwR28JKZQt0oIHFUJBF0zhcL.svg)](https://asciinema.org/a/eRwR28JKZQt0oIHFUJBF0zhcL)
+## Comparison of flat files (YAML) demonstration:
+for start:
+```
+gendiff [filepath1] [filepath2]
+```
+[![asciicast](https://asciinema.org/a/VcS9zNpHKH6DDa9WKGFAJDOG8.svg)](https://asciinema.org/a/VcS9zNpHKH6DDa9WKGFAJDOG8)
