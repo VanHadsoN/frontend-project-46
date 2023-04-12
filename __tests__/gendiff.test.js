@@ -1,9 +1,9 @@
 import { extname, dirname, resolve } from 'path';
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
-import genTree from '../src/genTree.js';
+import fileComparison from '../src/fileComparison.js';
 import format from '../src/formatters/index.js';
-import genDiff from '../index';
+import genDiff from '../index.js';
 import parsers from '../src/parsers.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -26,9 +26,9 @@ test.each(formatsFiles)('different formats of files (.json, .yml, .yaml) & outpu
   const file1 = parsers(readFile1, getExtension(fileName1));
   const file2 = parsers(readFile2, getExtension(fileName2));
 
-  expect(format(genTree(file1, file2), 'stylish')).toEqual(expectedStylishOutput);
-  expect(format(genTree(file1, file2), 'plain')).toEqual(expectedPlainOutput);
-  expect(format(genTree(file1, file2), 'json')).toEqual(expectedJsonOutput);
+  expect(format(fileComparison(file1, file2), 'stylish')).toEqual(expectedStylishOutput);
+  expect(format(fileComparison(file1, file2), 'plain')).toEqual(expectedPlainOutput);
+  expect(format(fileComparison(file1, file2), 'json')).toEqual(expectedJsonOutput);
 });
 
 test('additional parameter format is invalid test', () => {
@@ -36,7 +36,7 @@ test('additional parameter format is invalid test', () => {
   const file1 = parsers(readFile('file1.json'), 'json');
   const file2 = parsers(readFile('file2.json'), 'json');
 
-  expect(() => format(genTree(file1, file2), formatName)).toThrow(`Unknown format to generate a tree: '${formatName}'!`);
+  expect(() => format(fileComparison(file1, file2), formatName)).toThrow(`Unknown format to generate a tree: '${formatName}'!`);
 });
 
 test('wrong formats of files test', () => {
