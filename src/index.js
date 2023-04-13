@@ -1,17 +1,22 @@
-import path from 'path';
+import { extname, resolve } from 'path';
 import { readFileSync } from 'fs';
-import process from 'process';
-import parse from './parsers.js';
+import parsers from './parsers.js';
 import fileComparison from './fileComparison.js';
-import makeString from './makeString.js';
+import format from './formatters/index.js';
 
-const getAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath);
-const getData = (filepath) => readFileSync(getAbsolutePath(filepath), 'utf-8');
-const getExtension = (filepath) => path.extname(filepath).slice(1);
+const getExtension = (filename) => extname(filename).slice(1);
+const getFixturePathToFile = (filename) => resolve(process.cwd(), filename);
+const readFile = (filename) => readFileSync(getFixturePathToFile(filename), 'utf-8');
 
-export default (filepath1, filepath2) => {
-  const obj1 = parse(getData(filepath1), getExtension(filepath1));
-  const obj2 = parse(getData(filepath2), getExtension(filepath2));
-  const differences = fileComparison(obj1, obj2);
-  return makeString(differences);
+const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
+  const readFile1 = readFile(filepath1);
+  const readFile2 = readFile(filepath2);
+  
+  const file1 = parsers(readFile1, getExtension(filepath1));
+  const file2 = parsers(readFile2, getExtension(filepath2));
+
+  const tree = fileComparison(file1, file2);
+  return format(tree, formatName);
 };
+
+export default genDiff;
