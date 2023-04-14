@@ -1,3 +1,4 @@
+import { test, expect } from '@jest/globals';
 import { extname, dirname, resolve } from 'path';
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
