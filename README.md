@@ -19,3 +19,9 @@ for start:
 gendiff [filepath1] [filepath2]
 ```
 [![asciicast](https://asciinema.org/a/L1MKxgsN83lTNkMh9PIVLzyZY.svg)](https://asciinema.org/a/L1MKxgsN83lTNkMh9PIVLzyZY)
+## Comparison of nested files with plain format demonstration:
+for start:
+```
+gendiff [filepath1] [filepath2]
+```
+[![asciicast](https://asciinema.org/a/tMyvjnztJh3v324G1HrPJRxhD.svg)](https://asciinema.org/a/tMyvjnztJh3v324G1HrPJRxhD)
