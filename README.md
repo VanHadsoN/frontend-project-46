@@ -25,3 +25,9 @@ for start:
 gendiff [filepath1] [filepath2]
 ```
 [![asciicast](https://asciinema.org/a/tMyvjnztJh3v324G1HrPJRxhD.svg)](https://asciinema.org/a/tMyvjnztJh3v324G1HrPJRxhD)
+## Comparison of nested files with json format demonstration:
+for start:
+```
+gendiff [filepath1] [filepath2]
+```
+[![asciicast](https://asciinema.org/a/q1Rlbk64du1sllFyERajAcSha.svg)](https://asciinema.org/a/q1Rlbk64du1sllFyERajAcSha)
