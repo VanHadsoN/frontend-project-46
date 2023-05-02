@@ -2,7 +2,7 @@ import { extname, resolve } from 'path';
 import { readFileSync } from 'fs';
 import selectParser from './parsers.js';
 import fileComparison from './fileComparison.js';
-import format from './formatters/index.js';
+import selectFormatter from './formatters/index.js';
 
 const getExtension = (filename) => extname(filename).slice(1);
 const getFixturePathToFile = (filename) => resolve(process.cwd(), filename);
@@ -15,7 +15,7 @@ const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
   const file2 = selectParser(readFile2, getExtension(filepath2));
 
   const tree = fileComparison(file1, file2);
-  return format(tree, formatName);
+  return selectFormatter(tree, formatName);
 };
 
 export default genDiff;

@@ -2,7 +2,7 @@ import stylish from './stylish.js';
 import plain from './plain.js';
 import json from './json.js';
 
-const format = (tree, formatName) => {
+const selectFormatter = (tree, formatName) => {
   switch (formatName) {
     case 'stylish': {
       return stylish(tree);
@@ -18,4 +18,4 @@ const format = (tree, formatName) => {
   }
 };
 
-export default format;
+export default selectFormatter;

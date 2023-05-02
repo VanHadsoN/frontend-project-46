@@ -3,7 +3,7 @@ import { extname, dirname, resolve } from 'path';
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import fileComparison from '../src/fileComparison.js';
-import format from '../src/formatters/index.js';
+import selectFormatter from '../src/formatters/index.js';
 import genDiff from '../index.js';
 import selectParser from '../src/parsers.js';
 
@@ -27,9 +27,9 @@ test.each(formatsFiles)('different formats of files (.json, .yml, .yaml) & outpu
   const file1 = selectParser(readFile1, getExtension(fileName1));
   const file2 = selectParser(readFile2, getExtension(fileName2));
 
-  expect(format(fileComparison(file1, file2), 'stylish')).toEqual(expectedStylishOutput);
-  expect(format(fileComparison(file1, file2), 'plain')).toEqual(expectedPlainOutput);
-  expect(format(fileComparison(file1, file2), 'json')).toEqual(expectedJsonOutput);
+  expect(selectFormatter(fileComparison(file1, file2), 'stylish')).toEqual(expectedStylishOutput);
+  expect(selectFormatter(fileComparison(file1, file2), 'plain')).toEqual(expectedPlainOutput);
+  expect(selectFormatter(fileComparison(file1, file2), 'json')).toEqual(expectedJsonOutput);
 });
 
 test('additional parameter format is invalid test', () => {
@@ -37,7 +37,7 @@ test('additional parameter format is invalid test', () => {
   const file1 = selectParser(readFile('file1.json'), 'json');
   const file2 = selectParser(readFile('file2.json'), 'json');
 
-  expect(() => format(fileComparison(file1, file2), formatName)).toThrow(`Unknown format to generate a tree: '${formatName}'!`);
+  expect(() => selectFormatter(fileComparison(file1, file2), formatName)).toThrow(`Unknown format to generate a tree: '${formatName}'!`);
 });
 
 test('wrong formats of files test', () => {
