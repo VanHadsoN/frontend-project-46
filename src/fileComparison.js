@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const fileComparison = (data1, data2) => {
+const buildTree = (data1, data2) => {
   const keys1 = _.keys(data1);
   const keys2 = _.keys(data2);
   const allKeys = _.union(keys1, keys2);
@@ -29,7 +29,7 @@ const fileComparison = (data1, data2) => {
       return {
         key,
         type: 'nested',
-        children: fileComparison(data1[key], data2[key]),
+        children: buildTree(data1[key], data2[key]),
       };
     }
     // Если значения текущего ключа НЕ равны друг другу (значениям в файле1 и файле2)
@@ -52,4 +52,4 @@ const fileComparison = (data1, data2) => {
   return result;
 };
 
-export default fileComparison;
+export default buildTree;
