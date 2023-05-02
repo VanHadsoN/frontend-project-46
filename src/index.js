@@ -1,6 +1,6 @@
 import { extname, resolve } from 'path';
 import { readFileSync } from 'fs';
-import parsers from './parsers.js';
+import selectParser from './parsers.js';
 import fileComparison from './fileComparison.js';
 import format from './formatters/index.js';
 
@@ -11,8 +11,8 @@ const readFile = (filename) => readFileSync(getFixturePathToFile(filename), 'utf
 const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
   const readFile1 = readFile(filepath1);
   const readFile2 = readFile(filepath2);
-  const file1 = parsers(readFile1, getExtension(filepath1));
-  const file2 = parsers(readFile2, getExtension(filepath2));
+  const file1 = selectParser(readFile1, getExtension(filepath1));
+  const file2 = selectParser(readFile2, getExtension(filepath2));
 
   const tree = fileComparison(file1, file2);
   return format(tree, formatName);

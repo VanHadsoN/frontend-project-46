@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 import fileComparison from '../src/fileComparison.js';
 import format from '../src/formatters/index.js';
 import genDiff from '../index.js';
-import parsers from '../src/parsers.js';
+import selectParser from '../src/parsers.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -24,8 +24,8 @@ test.each(formatsFiles)('different formats of files (.json, .yml, .yaml) & outpu
   const fileName2 = `file2.${formatFile}`;
   const readFile1 = readFile(fileName1);
   const readFile2 = readFile(fileName2);
-  const file1 = parsers(readFile1, getExtension(fileName1));
-  const file2 = parsers(readFile2, getExtension(fileName2));
+  const file1 = selectParser(readFile1, getExtension(fileName1));
+  const file2 = selectParser(readFile2, getExtension(fileName2));
 
   expect(format(fileComparison(file1, file2), 'stylish')).toEqual(expectedStylishOutput);
   expect(format(fileComparison(file1, file2), 'plain')).toEqual(expectedPlainOutput);
@@ -34,8 +34,8 @@ test.each(formatsFiles)('different formats of files (.json, .yml, .yaml) & outpu
 
 test('additional parameter format is invalid test', () => {
   const formatName = 'invalidParameter';
-  const file1 = parsers(readFile('file1.json'), 'json');
-  const file2 = parsers(readFile('file2.json'), 'json');
+  const file1 = selectParser(readFile('file1.json'), 'json');
+  const file2 = selectParser(readFile('file2.json'), 'json');
 
   expect(() => format(fileComparison(file1, file2), formatName)).toThrow(`Unknown format to generate a tree: '${formatName}'!`);
 });

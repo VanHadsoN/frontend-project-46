@@ -1,6 +1,6 @@
 import { load } from 'js-yaml';
 
-const parsers = (content, formatName) => {
+const selectParser = (content, formatName) => {
   switch (formatName) {
     case 'json':
       return JSON.parse(content);
@@ -12,4 +12,4 @@ const parsers = (content, formatName) => {
   }
 };
 
-export default parsers;
+export default selectParser;
