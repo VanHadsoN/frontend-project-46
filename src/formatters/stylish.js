@@ -41,14 +41,11 @@ const stylish = (currentValue, depth = 1) => {
         return `${indents.openBracket}+ ${line.key}: ${makeValue}`;
       case 'removed':
         return `${indents.openBracket}- ${line.key}: ${makeValue}`;
-      case 'updated':
-        return `${indents.openBracket}- ${line.key}: ${stringify(
-          line.removedValue,
-          depth + 1,
-        )}\n${indents.openBracket}+ ${line.key}: ${stringify(
-          line.addedValue,
-          depth + 1,
-        )}`;
+      case 'updated': {
+        const oldEntry = `${indents.openBracket}- ${line.key}: ${stringify(line.removedValue, depth + 1)}`;
+        const newEntry = `${indents.openBracket}+ ${line.key}: ${stringify(line.addedValue, depth + 1)}`;
+        return `${oldEntry}\n${newEntry}`;
+      }
       case 'unchanged':
         return `${indents.openBracket}  ${line.key}: ${makeValue}`;
       case 'nested':
